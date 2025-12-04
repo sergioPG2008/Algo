@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editar Cliente</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .form-container {
+        max-width: 600px;
+        margin: 30px auto;
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0 15px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 15px;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    .mensaje {
+        background-color: #d4edda;
+        color: #155724;
+        padding: 10px;
+        border: 1px solid #c3e6cb;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    a {
+        display: block;
+        text-align: center;
+        margin-top: 15px;
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+{% include 'navbar.html' %}
+<div class="form-container">
+    <h1>Editar Cliente: {{ cliente.nombre }}</h1>
+
+    {% if mensaje %}
+    <div class="mensaje">
+        {{ mensaje }} <br>
+        <a href="/buscar/">Volver al buscador</a>
+    </div>
+    {% endif %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <label>Nombre:</label>
+        <input type="text" name="nombre" value="{{ cliente.nombre }}" required>
+
+        <label>Apellidos:</label>
+        <input type="text" name="apellidos" value="{{ cliente.apellidos }}" required>
+
+        <label>Teléfono:</label>
+        <input type="tel" name="telefono" value="{{ cliente.telefono }}" required>
+
+        <label>Email:</label>
+        <input type="email" name="gmail" value="{{ cliente.gmail }}">
+
+        <label>Dirección:</label>
+        <input type="text" name="direccion" value="{{ cliente.direccion }}" required>
+
+        <label>Planta Favorita:</label>
+        <input type="text" name="plantaFav" value="{{ cliente.plantaFav }}" required>
+
+        <input type="submit" value="Actualizar Datos">
+    </form>
+
+    <a href="/buscar/">Cancelar y volver</a>
+</div>
+</body>
+</html>

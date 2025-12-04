@@ -19,7 +19,7 @@
             justify-content: center;
             align-items: center;
             height: calc(100vh - 80px); /* deja espacio para el navbar */
-            padding-top: 20px;
+            padding-top: 150px;
         }
 
         .login-container {
@@ -82,12 +82,34 @@
     <div class="main-login-wrapper">
         <div class="login-container">
             <h2>Iniciar Sesión</h2>
-
-            <form method="POST">
+            {% if mensaje %}
+                <div style="background-color: #d4edda; color: #155724; padding: 10px; border: 1px solid #c3e6cb;">
+                    {{ mensaje }}
+                </div>
+            {% endif %}
+            <form method="post">
                 {% csrf_token %}
-                <input type="text" placeholder="Usuario" required>
-                <input type="password" placeholder="Contraseña" required>
-                <button type="submit">Entrar</button>
+                
+                <label for="nombre">Nombre:</label><br>
+                <input type="text" id="nombre" name="nombre" required><br><br>
+
+                <label for="apellidos">Apellidos:</label><br>
+                <input type="text" id="apellidos" name="apellidos" required><br><br>
+
+                <label for="telefono">Teléfono:</label><br>
+                <input type="tel" id="telefono" name="telefono" required><br><br>
+
+                <label for="gmail">Correo electrónico:</label><br>
+                <input type="email" id="gmail" name="gmail"><br><br>
+
+                <label for="direccion">Dirección:</label><br>
+                <input type="text" id="direccion" name="direccion" required><br><br>
+
+                <label for="plantaFav">Planta Favorita:</label><br>
+                <input type="text" id="plantaFav" name="plantaFav" required><br><br>
+
+                <input type="submit" value="Guardar">
+                <input type="reset" value="Limpiar">
             </form>
 
             <a href="#">¿Olvidaste tu contraseña?</a>
